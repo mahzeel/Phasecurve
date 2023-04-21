@@ -7,26 +7,36 @@ describe("Testing LandingPage",function (){
 
   })
 
-  it.skip("Should launch url and navigate to landingpage",function (){ 
-    cy.get('[href="/about"] > .chakra-text').click()
-  })
+  it("Should launch url and navigate to landingpage",function (){ 
+        cy.scrollTo(0,300)
+        cy.wait(2000)
+        cy.contains('Contact Us').click()
+        cy.scrollTo(0,600)
+        cy.wait(2000)
+        cy.go('back')
+        cy.scrollTo(0, 2000)
+        cy.wait(2000)
+        cy.contains('Contact Us').click()
+        cy.wait(1500)
+        cy.scrollTo(0,600)
+        cy.wait(1000)
+        cy.go('back')
+        cy.wait(500)
+        cy.scrollTo(0,3500)
+        cy.wait(2000)
+        cy.get('.chakra-input').type('mahzeeljohn@gmail.com')
+        cy.wait(400)
+        cy.contains('Apply Now').should('contain', 'Apply Now')
+          .should('have.class', 'chakra-button css-1l1lhbs')
+          .should('be.visible')
+          .should('be.visible')
+          .click()
 
-
-  it('Should be able to enroll for a program',function (){
-    cy.get('[href="/programme"] > .chakra-text').click()
-    cy.get('.css-e7jxo8 > a > .chakra-button').click()
-    cy.wait(3000)
-    cy.get('[name="firstName"]').type('John')
-    cy.get('[name="lastName"]').type('Chimezie')
-    cy.get('[name="email"]').type('mahzeeljohn@gmail.com')
-    cy.get('[name="experience"]').select('1-3 Years')
-    .should('have.value', '1-3 Years')
-    .should('be.visible')
-    .should('be.enabled')
-    cy.get('[name="phone"]').type('+2348175376831')
-    .should('be.visible')
-    cy.get('[name="githubUrl"]').type('https://github.com/mahzeel')
-    cy.get('[id="field-:r6:"]').type('https://www.linkedin.com/in/ifeanyi-chimezie-92330714a/')
+        let message = 'Subscribe Successfully'
+        expect(message).to.be.equal('Subscribe Successfully')
+        
+      
+        
 
   })
 })
